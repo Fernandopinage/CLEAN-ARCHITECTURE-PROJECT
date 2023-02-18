@@ -30,8 +30,6 @@ export default class UserUseCase implements IUserUseCase {
 		});
 
 		const response = await this.userGateway.create(result.parms);
-		console.log(response);
-
 		return {
 			body: {
 				id: response.id
