@@ -1,8 +1,8 @@
 import { sequelize } from '@/infra/database/sequelize/config/database';
 import { DataTypes, Model } from 'sequelize';
-export class Address extends Model {}
+export class Academic extends Model {}
 
-Address.init(
+Academic.init(
 	{
 		id: {
 			type: DataTypes.BIGINT,
@@ -13,38 +13,34 @@ Address.init(
 			type: DataTypes.BIGINT,
 			allowNull: false
 		},
-		cep: {
+		training: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		uf: {
+		institution: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		city: {
+		name: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		neighborhood: {
+		completion_year: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		number: {
+		start_year: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		public_place: {
+		period: {
 			type: DataTypes.STRING,
-			allowNull: true
-		},
-		complement: {
-			type: DataTypes.STRING,
-			allowNull: true
+			allowNull: false
 		}
 	},
 	{
 		sequelize,
-		modelName: 'address',
-		tableName: 'addresses'
+		modelName: 'academic',
+		tableName: 'academics'
 	}
 );

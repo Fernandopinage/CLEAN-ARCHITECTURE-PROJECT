@@ -1,8 +1,8 @@
 import { sequelize } from '@/infra/database/sequelize/config/database';
 import { DataTypes, Model } from 'sequelize';
-export class Address extends Model {}
+export class Utv extends Model {}
 
-Address.init(
+Utv.init(
 	{
 		id: {
 			type: DataTypes.BIGINT,
@@ -13,38 +13,26 @@ Address.init(
 			type: DataTypes.BIGINT,
 			allowNull: false
 		},
-		cep: {
+		name: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		uf: {
+		workload: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		city: {
+		data_certificate: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		neighborhood: {
+		occupation_area: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		number: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		public_place: {
-			type: DataTypes.STRING,
-			allowNull: true
-		},
-		complement: {
-			type: DataTypes.STRING,
-			allowNull: true
 		}
 	},
 	{
 		sequelize,
-		modelName: 'address',
-		tableName: 'addresses'
+		modelName: 'utv',
+		tableName: 'utvs'
 	}
 );
