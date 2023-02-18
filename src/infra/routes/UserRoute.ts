@@ -6,10 +6,24 @@ class UserRoute {
 		app.post('/api/v1/users', async (req, res) => {
 			const response = await userController.create({
 				body: {
-					name: req.body.name,
-					cpf: req.body.cpf,
+					first_name: req.body.first_name,
+					second_name: req.body.second_name,
+					email: req.body.email,
+					password: req.body.password,
+					phone: req.body.phone,
+					pcd: req.body.pcd,
 					rg: req.body.rg,
-					year: req.body.year
+					cpf: req.body.cpf,
+					year: req.body.year,
+					birth_place: req.body.birth_place,
+					color_race: req.body.color_race,
+					Weight: req.body.Weight,
+					height: req.body.height,
+					marital_status: req.body.marital_status,
+					children: req.body.children,
+					gender: req.body.gender,
+					salary_expectation: req.body.salary_expectation,
+					military_experience: req.body.military_experience
 				}
 			});
 			res.status(response.statusCode);
