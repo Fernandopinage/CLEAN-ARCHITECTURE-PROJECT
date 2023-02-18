@@ -1,15 +1,25 @@
 version: "3"
 
 services:
-
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'lfpc'
+      MYSQL_USER: 'roo'
+      MYSQL_PASSWORD: 'root'
+    ports:
+      - "3306:3306"
   db:
     image: mariadb
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: root
-      MYSQL_DATABASE: LFPC
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      PMA_HOST: mysql
+      MARIADB_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'lfpc'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'root'
   adminer:
     image: adminer
     restart: always

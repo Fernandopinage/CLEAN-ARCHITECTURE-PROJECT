@@ -1,5 +1,5 @@
 {
-  "name": "portal-dev-back",
+  "name": "project",
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.itriad.org.br/itriad-systems/gertec/g-smart/portal-dev-back.git"
+    "url": "https://github.com/Fernandopinage/CLEAN-ARCHITECTURE"
   },
   "keywords": [],
   "author": "",
@@ -41,10 +41,12 @@
     "husky": "^8.0.2",
     "jest": "^29.3.1",
     "lint-staged": "^13.0.3",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
     "prettier": "2.7.1",
     "rimraf": "^3.0.2",
-    "sequelize-cli": "^6.5.2",
+    "sequelize": "^6.28.0",
+    "sequelize-cli": "^6.6.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
@@ -56,8 +58,6 @@
   },
   "dependencies": {
     "@types/express": "^4.17.14",
-    "cors": "^2.8.5",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.25.8"
+    "cors": "^2.8.5"
   }
 }
