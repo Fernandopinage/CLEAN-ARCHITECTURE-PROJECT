@@ -5,7 +5,7 @@ import StatusCode from '@/app/status/StatusCode';
 export default class BaseController {
 	async createUseCase(req: HttpRequest<object>, useCase): Promise<HttpResponse<CreateUserResponse>> {
 		try {
-			return useCase.create(req);
+			return useCase.execute(req);
 		} catch (error) {
 			console.log(error);
 			return {

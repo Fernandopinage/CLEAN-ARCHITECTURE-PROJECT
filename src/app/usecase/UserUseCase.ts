@@ -1,11 +1,13 @@
-import { IUserUseCase } from '@/app/protocol/gateways/IUserUseCase';
+import { IUserGateway } from '@/app/protocol/gateways/IUserGateway';
 import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from '../dto';
 import { UserDomain } from '@/domain/entities/UserDomain';
 import StatusCode from '../status/StatusCode';
+import { IUserUseCase } from '../protocol/IUserUseCase';
 
 export default class UserUseCase implements IUserUseCase {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	async create(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {
+	constructor(private userGateway: IUserGateway) {}
+
+	async execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {
 		const result = UserDomain.execute({
 			first_name: input.body.first_name,
 			second_name: input.body.second_name,
@@ -26,9 +28,14 @@ export default class UserUseCase implements IUserUseCase {
 			salary_expectation: input.body.salary_expectation,
 			military_experience: input.body.military_experience
 		});
-		console.log('>>>>>', result.parms);
+
+		const response = await this.userGateway.create(result.parms);
+		console.log(response);
 
 		return {
+			body: {
+				id: response.id
+			},
 			statusCode: StatusCode.created
 		};
 	}
