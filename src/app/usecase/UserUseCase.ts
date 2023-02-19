@@ -3,12 +3,14 @@ import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from
 import { UserDomain } from '@/domain/entities/UserDomain';
 import StatusCode from '../status/StatusCode';
 import { IUserUseCase } from '../protocol/IUserUseCase';
+import { IAddressGateway } from '../protocol/gateways/IAddressGateway';
+import { AddressDomain } from '@/domain/entities/AddressDomain';
 
 export default class UserUseCase implements IUserUseCase {
-	constructor(private userGateway: IUserGateway) {}
+	constructor(private userGateway: IUserGateway, private addressGateway: IAddressGateway) {}
 
 	async execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {
-		const result = UserDomain.execute({
+		const userResult = UserDomain.execute({
 			first_name: input.body.first_name,
 			second_name: input.body.second_name,
 			email: input.body.email,
@@ -29,10 +31,24 @@ export default class UserUseCase implements IUserUseCase {
 			military_experience: input.body.military_experience
 		});
 
-		const response = await this.userGateway.create(result.parms);
+		const userCreate = await this.userGateway.create(userResult.parms);
+
+		const addressResult = AddressDomain.execute({
+			id_user: userCreate.id,
+			cep: input.body.cep,
+			uf: input.body.uf,
+			city: input.body.city,
+			neighborhood: input.body.neighborhood,
+			number: input.body.number,
+			public_place: input.body.public_place,
+			complement: input.body.complement
+		});
+
+		await this.addressGateway.create(addressResult.parms);
+
 		return {
 			body: {
-				id: response.id
+				id: userCreate.id
 			},
 			statusCode: StatusCode.created
 		};

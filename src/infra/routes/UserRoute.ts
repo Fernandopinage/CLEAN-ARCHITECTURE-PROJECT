@@ -23,7 +23,15 @@ class UserRoute {
 					children: req.body.children,
 					gender: req.body.gender,
 					salary_expectation: req.body.salary_expectation,
-					military_experience: req.body.military_experience
+					military_experience: req.body.military_experience,
+
+					cep: req.body.cep,
+					uf: req.body.uf,
+					city: req.body.city,
+					neighborhood: req.body.neighborhood,
+					number: req.body.number,
+					public_place: req.body.public_place,
+					complement: req.body.complement
 				}
 			});
 			res.status(response.statusCode);
