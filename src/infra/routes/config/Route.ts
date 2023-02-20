@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import UserRoute from '@/infra/routes/UserRoute';
 import AddressRoute from '@/infra/routes/AddressRoute';
+import AcademicRoute from '@/infra/routes/AcademicRoute';
 dotenv.config();
 
 const port = process.env.PORT;
@@ -39,6 +40,7 @@ export default class Route {
 	private setRoutes(): void {
 		UserRoute.route(this.app);
 		AddressRoute.route(this.app);
+		AcademicRoute.route(this.app);
 	}
 
 	listen() {

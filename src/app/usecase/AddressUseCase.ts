@@ -3,6 +3,7 @@ import { HttpRequest, HttpResponse } from '../dto';
 import { CreateAddressRequest } from '../dto/address/CreateAddressRequest';
 import { CreateAddressResponse } from '../dto/address/CreateAddressResponse';
 import { IAddressGateway } from '../protocol/gateways/IAddressGateway';
+import StatusCode from '../status/StatusCode';
 
 export default class AddressUseCase {
 	constructor(private addressGateway: IAddressGateway) {}
@@ -20,7 +21,7 @@ export default class AddressUseCase {
 
 		const response = await this.addressGateway.create(addressResult.parms);
 		return {
-			statusCode: 200,
+			statusCode: StatusCode.created,
 			body: {
 				id: response.id
 			}
