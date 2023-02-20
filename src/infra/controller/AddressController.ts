@@ -1,5 +1,5 @@
 import { CreateAddressRequest, CreateUserResponse, HttpRequest, HttpResponse } from '@/app/dto';
-import AddressUseCase from '@/app/usecase/AddressUseCase';
+import AddressUseCase from '@/app/usecase/address/AddressUseCase';
 import AddressGateway from '../gateways/AddressGateway';
 import BaseController from './BaseController';
 

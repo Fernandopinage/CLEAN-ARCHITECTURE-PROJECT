@@ -1,8 +1,8 @@
 import AcademicDomain from '@/domain/entities/AcademicDomain';
-import { CreateAcademicRequest, CreateAcademicResponse, HttpRequest, HttpResponse } from '../dto';
-import { IAcademicGateway } from '../protocol/gateways/AcademicGateway';
-import { IAcademicUseCase } from '../protocol/IAcademicUseCase';
-import StatusCode from '../status/StatusCode';
+import { CreateAcademicRequest, CreateAcademicResponse, HttpRequest, HttpResponse } from '../../dto';
+import { IAcademicGateway } from '../../protocol/gateways/AcademicGateway';
+import { IAcademicUseCase } from '../../protocol/IAcademicUseCase';
+import StatusCode from '../../status/StatusCode';
 
 export default class AcademicUseCase implements IAcademicUseCase {
 	constructor(private academicGateway: IAcademicGateway) {}

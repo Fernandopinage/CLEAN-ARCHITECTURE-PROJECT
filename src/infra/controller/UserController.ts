@@ -1,5 +1,5 @@
 import { HttpRequest, CreateUserRequest, HttpResponse, CreateUserResponse } from '@/app/dto';
-import UserUseCase from '@/app/usecase/UserUseCase';
+import UserUseCase from '@/app/usecase/user/UserUseCase';
 import BaseController from '@/infra/controller/BaseController';
 import AddressGateway from '../gateways/AddressGateway';
 import UserGateway from '../gateways/UserGateway';

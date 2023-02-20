@@ -1,9 +1,9 @@
 import { IUserGateway } from '@/app/protocol/gateways/IUserGateway';
-import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from '../dto';
+import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from '../../dto';
 import { UserDomain } from '@/domain/entities/UserDomain';
-import StatusCode from '../status/StatusCode';
-import { IUserUseCase } from '../protocol/IUserUseCase';
-import { IAddressGateway } from '../protocol/gateways/IAddressGateway';
+import StatusCode from '../../status/StatusCode';
+import { IUserUseCase } from '../../protocol/IUserUseCase';
+import { IAddressGateway } from '../../protocol/gateways/IAddressGateway';
 import { AddressDomain } from '@/domain/entities/AddressDomain';
 
 export default class UserUseCase implements IUserUseCase {

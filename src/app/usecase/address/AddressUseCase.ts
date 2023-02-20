@@ -1,9 +1,9 @@
 import { AddressDomain } from '@/domain/entities/AddressDomain';
-import { HttpRequest, HttpResponse } from '../dto';
-import { CreateAddressRequest } from '../dto/address/CreateAddressRequest';
-import { CreateAddressResponse } from '../dto/address/CreateAddressResponse';
-import { IAddressGateway } from '../protocol/gateways/IAddressGateway';
-import StatusCode from '../status/StatusCode';
+import { HttpRequest, HttpResponse } from '../../dto';
+import { CreateAddressRequest } from '../../dto/address/CreateAddressRequest';
+import { CreateAddressResponse } from '../../dto/address/CreateAddressResponse';
+import { IAddressGateway } from '../../protocol/gateways/IAddressGateway';
+import StatusCode from '../../status/StatusCode';
 
 export default class AddressUseCase {
 	constructor(private addressGateway: IAddressGateway) {}
