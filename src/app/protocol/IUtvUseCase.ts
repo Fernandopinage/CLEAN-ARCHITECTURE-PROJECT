@@ -1,5 +1,5 @@
-import { CreateUserRequest, CreateUserResponse, HttpRequest } from '../dto';
+import { CreateUtvRequest, CreateUtvResponse, HttpRequest } from '../dto';
 
 export interface IUtvUseCase {
-	execute(input: HttpRequest<CreateUserRequest>): Promise<HttpRequest<CreateUserResponse>>;
+	execute(input: HttpRequest<CreateUtvRequest>): Promise<HttpRequest<CreateUtvResponse>>;
 }
