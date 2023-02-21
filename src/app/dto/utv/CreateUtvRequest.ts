@@ -1,5 +1,4 @@
-export interface UtvProtocols {
-	id?: number;
+export interface CreateUtvRequest {
 	id_user: number;
 	name: string;
 	workload: string;

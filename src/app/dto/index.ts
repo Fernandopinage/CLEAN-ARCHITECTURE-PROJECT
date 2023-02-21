@@ -8,5 +8,7 @@ export { CreateCourseRequest } from '@/app/dto/couse/CreateCourseRequest';
 export { CreateCourseResponse } from '@/app/dto/couse/CreateCourseResponse';
 export { CreateLanguagemRequest } from '@/app/dto/languagem/CreateLanguagemRequest';
 export { CreateLanguagemResponse } from '@/app/dto/languagem/CreateLanguagemResponse';
+export { CreateUtvRequest } from '@/app/dto/utv/CreateUtvRequest';
+export { CreateUtvResponse } from '@/app/dto/utv/CreateUtvResponse';
 export { HttpRequest } from '@/app/dto/http/HttpRequest';
 export { HttpResponse } from '@/app/dto/http/HttpResponse';
