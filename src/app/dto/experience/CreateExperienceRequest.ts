@@ -1,5 +1,5 @@
-export interface ExperienceProtocol {
-	id?: number;
+export interface CreateExperienceRequest {
+	id: number;
 	id_user: number;
 	first_job: boolean;
 	company_name: string;

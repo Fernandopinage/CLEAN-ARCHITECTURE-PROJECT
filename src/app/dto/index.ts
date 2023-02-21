@@ -10,5 +10,9 @@ export { CreateLanguagemRequest } from '@/app/dto/languagem/CreateLanguagemReque
 export { CreateLanguagemResponse } from '@/app/dto/languagem/CreateLanguagemResponse';
 export { CreateUtvRequest } from '@/app/dto/utv/CreateUtvRequest';
 export { CreateUtvResponse } from '@/app/dto/utv/CreateUtvResponse';
+export { CreateExperienceRequest } from '@/app/dto/experience/CreateExperienceRequest';
+export { CreateExperienceResponse } from '@/app/dto/experience/CreateExperienceResponse';
+export { CreateInterestRequest } from '@/app/dto/interes/CreateInterestRequest';
+export { CreateInterestResponse } from '@/app/dto/interes/CreateInterestResponse';
 export { HttpRequest } from '@/app/dto/http/HttpRequest';
 export { HttpResponse } from '@/app/dto/http/HttpResponse';
