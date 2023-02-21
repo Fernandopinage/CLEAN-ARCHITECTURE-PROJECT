@@ -5,6 +5,7 @@ import UserRoute from '@/infra/routes/UserRoute';
 import AddressRoute from '@/infra/routes/AddressRoute';
 import AcademicRoute from '@/infra/routes/AcademicRoute';
 import CourseRoute from '@/infra/routes/CourseRoute';
+import LanguagemRoute from '@/infra/routes/LanguagemRoute';
 dotenv.config();
 
 const port = process.env.PORT;
@@ -43,6 +44,7 @@ export default class Route {
 		AddressRoute.route(this.app);
 		AcademicRoute.route(this.app);
 		CourseRoute.route(this.app);
+		LanguagemRoute.route(this.app);
 	}
 
 	listen() {

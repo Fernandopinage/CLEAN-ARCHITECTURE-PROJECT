@@ -1,4 +1,4 @@
-export interface LanguageProtocol {
+export interface CreateLanguagemRequest {
 	id?: number;
 	id_user: number;
 	language: string;

@@ -1,4 +1,4 @@
-import { IAcademicGateway } from '@/app/protocol/gateways/AcademicGateway';
+import { IAcademicGateway } from '@/app/protocol/gateways/IAcademicGateway';
 import { Academic } from '../database/sequelize/models/Academic';
 
 export default class AcademicGateway implements IAcademicGateway {

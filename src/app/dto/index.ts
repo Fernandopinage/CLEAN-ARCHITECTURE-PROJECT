@@ -6,5 +6,7 @@ export { CreateAcademicRequest } from '@/app/dto/academic/CreateAcademicRequest'
 export { CreateAcademicResponse } from '@/app/dto/academic/CreateAcademicResponse';
 export { CreateCourseRequest } from '@/app/dto/couse/CreateCourseRequest';
 export { CreateCourseResponse } from '@/app/dto/couse/CreateCourseResponse';
+export { CreateLanguagemRequest } from '@/app/dto/languagem/CreateLanguagemRequest';
+export { CreateLanguagemResponse } from '@/app/dto/languagem/CreateLanguagemResponse';
 export { HttpRequest } from '@/app/dto/http/HttpRequest';
 export { HttpResponse } from '@/app/dto/http/HttpResponse';

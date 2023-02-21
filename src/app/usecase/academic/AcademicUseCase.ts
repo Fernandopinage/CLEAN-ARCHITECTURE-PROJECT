@@ -1,6 +1,6 @@
 import AcademicDomain from '@/domain/entities/AcademicDomain';
 import { CreateAcademicRequest, CreateAcademicResponse, HttpRequest, HttpResponse } from '../../dto';
-import { IAcademicGateway } from '../../protocol/gateways/AcademicGateway';
+import { IAcademicGateway } from '../../protocol/gateways/IAcademicGateway';
 import { IAcademicUseCase } from '../../protocol/IAcademicUseCase';
 import StatusCode from '../../status/StatusCode';
 
