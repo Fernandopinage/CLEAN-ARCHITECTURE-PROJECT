@@ -1,11 +1,11 @@
 import { CreateInterestRequest, CreateInterestResponse, HttpRequest, HttpResponse } from '@/app/dto';
-import { ICreateInterestGateway } from '@/app/protocol/gateways/ICreateInterestGateway';
+import { IInterestGateway } from '@/app/protocol/gateways/IInterestGateway';
 import { ICreateInterestUseCase } from '@/app/protocol/ICreateInterestUseCase';
 import StatusCode from '@/app/status/StatusCode';
 import InterestDomain from '@/domain/entities/InterestDomain';
 
 export default class CreateInterestUseCase implements ICreateInterestUseCase {
-	constructor(private interestGateway: ICreateInterestGateway) {}
+	constructor(private interestGateway: IInterestGateway) {}
 	async execute(input: HttpRequest<CreateInterestRequest>): Promise<HttpResponse<CreateInterestResponse>> {
 		const interestCreate = InterestDomain.execute({
 			id_user: input.body.id_user,

@@ -1,8 +1,8 @@
-export interface ICreateExperienceGateway {
-	create(input: ICreateExperienceGateway.Request): Promise<ICreateExperienceGateway.Response>;
+export interface IExperienceGateway {
+	create(input: IExperienceGateway.Request): Promise<IExperienceGateway.Response>;
 }
 
-export namespace ICreateExperienceGateway {
+export namespace IExperienceGateway {
 	export type Request = {
 		id?: number;
 		id_user: number;

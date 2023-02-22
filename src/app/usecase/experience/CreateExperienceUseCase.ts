@@ -1,11 +1,11 @@
 import { CreateExperienceRequest, CreateExperienceResponse, HttpRequest, HttpResponse } from '@/app/dto';
-import { ICreateExperienceGateway } from '@/app/protocol/gateways/ICreateExperienceGateway';
+import { IExperienceGateway } from '@/app/protocol/gateways/IExperienceGateway';
 import { ICreateExperienceUseCase } from '@/app/protocol/ICreateExperienceUseCase';
 import StatusCode from '@/app/status/StatusCode';
 import ExperienceDomain from '@/domain/entities/ExperienceDomain';
 
 export default class CreateExperienceUseCase implements ICreateExperienceUseCase {
-	constructor(private createExperienceGateway: ICreateExperienceGateway) {}
+	constructor(private createExperienceGateway: IExperienceGateway) {}
 	async execute(input: HttpRequest<CreateExperienceRequest>): Promise<HttpResponse<CreateExperienceResponse>> {
 		const createExperienceCreate = ExperienceDomain.execute({
 			id_user: input.body.id_user,
