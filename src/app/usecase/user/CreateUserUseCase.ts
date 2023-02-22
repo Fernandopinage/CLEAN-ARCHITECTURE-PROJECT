@@ -2,11 +2,11 @@ import { IUserGateway } from '@/app/protocol/gateways/IUserGateway';
 import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from '../../dto';
 import { UserDomain } from '@/domain/entities/UserDomain';
 import StatusCode from '../../status/StatusCode';
-import { IUserUseCase } from '../../protocol/IUserUseCase';
+import { ICreateUserUseCase } from '../../protocol/ICreateUserUseCase';
 import { IAddressGateway } from '../../protocol/gateways/IAddressGateway';
 import { AddressDomain } from '@/domain/entities/AddressDomain';
 
-export default class UserUseCase implements IUserUseCase {
+export default class CreateUserUseCase implements ICreateUserUseCase {
 	constructor(private userGateway: IUserGateway, private addressGateway: IAddressGateway) {}
 
 	async execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {

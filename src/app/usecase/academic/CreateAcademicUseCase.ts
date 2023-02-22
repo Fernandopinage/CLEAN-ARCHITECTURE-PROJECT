@@ -1,10 +1,10 @@
 import AcademicDomain from '@/domain/entities/AcademicDomain';
 import { CreateAcademicRequest, CreateAcademicResponse, HttpRequest, HttpResponse } from '../../dto';
 import { IAcademicGateway } from '../../protocol/gateways/IAcademicGateway';
-import { IAcademicUseCase } from '../../protocol/IAcademicUseCase';
+import { ICreateAcademicUseCase } from '../../protocol/ICreateAcademicUseCase';
 import StatusCode from '../../status/StatusCode';
 
-export default class AcademicUseCase implements IAcademicUseCase {
+export default class CreateAcademicUseCase implements ICreateAcademicUseCase {
 	constructor(private academicGateway: IAcademicGateway) {}
 	async execute(input: HttpRequest<CreateAcademicRequest>): Promise<HttpResponse<CreateAcademicResponse>> {
 		const academicResult = AcademicDomain.execute({

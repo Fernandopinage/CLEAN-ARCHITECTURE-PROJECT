@@ -1,10 +1,10 @@
 import { HttpRequest, HttpResponse, CreateUtvRequest, CreateUtvResponse } from '@/app/dto';
 import { IUtvGateway } from '@/app/protocol/gateways/IUtvGateway';
-import { IUtvUseCase } from '@/app/protocol/IUtvUseCase';
+import { ICreateUtvUseCase } from '@/app/protocol/ICreateUtvUseCase';
 import StatusCode from '@/app/status/StatusCode';
 import UtvDomain from '@/domain/entities/UtvDomain';
 
-export default class UtvUseCase implements IUtvUseCase {
+export default class CreateUtvUseCase implements ICreateUtvUseCase {
 	constructor(private utvGateway: IUtvGateway) {}
 	async execute(input: HttpRequest<CreateUtvRequest>): Promise<HttpResponse<CreateUtvResponse>> {
 		const utvCreate = UtvDomain.execute({

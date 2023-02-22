@@ -1,10 +1,10 @@
 import { CreateLanguagemRequest, CreateLanguagemResponse, HttpRequest, HttpResponse } from '@/app/dto';
 import { ILanguagemGateway } from '@/app/protocol/gateways/ILanguagemGateway';
-import { ILanguagemUseCase } from '@/app/protocol/ILanguagemUseCase';
+import { ICreateLanguagemUseCase } from '@/app/protocol/ICreateLanguagemUseCase';
 import StatusCode from '@/app/status/StatusCode';
 import LanguageDomain from '@/domain/entities/LanguagemDomain';
 
-export default class LanguagemUseCase implements ILanguagemUseCase {
+export default class CreateLanguagemUseCase implements ICreateLanguagemUseCase {
 	constructor(private languagemGateway: ILanguagemGateway) {}
 	async execute(input: HttpRequest<CreateLanguagemRequest>): Promise<HttpResponse<CreateLanguagemResponse>> {
 		const languagemCreate = LanguageDomain.execute({

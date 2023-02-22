@@ -1,10 +1,10 @@
 import { CreateCourseRequest, CreateCourseResponse, HttpRequest, HttpResponse } from '@/app/dto';
 import { ICourseGateway } from '@/app/protocol/gateways/ICourseGateway';
-import { ICourseUseCase } from '@/app/protocol/ICourseUseCase';
+import { ICreateCourseUseCase } from '@/app/protocol/ICreateCourseUseCase';
 import StatusCode from '@/app/status/StatusCode';
 import CourseDomain from '@/domain/entities/CourseDomain';
 
-export default class CourseUseCase implements ICourseUseCase {
+export default class CreateCourseUseCase implements ICreateCourseUseCase {
 	constructor(private courseGateway: ICourseGateway) {}
 	async execute(input: HttpRequest<CreateCourseRequest>): Promise<HttpResponse<CreateCourseResponse>> {
 		const courseResult = CourseDomain.execute({

@@ -1,12 +1,12 @@
 import { CreateAcademicRequest, CreateAcademicResponse, HttpRequest, HttpResponse } from '@/app/dto';
-import AcademicUseCase from '@/app/usecase/academic/AcademicUseCase';
+import CreateAcademicUseCase from '@/app/usecase/academic/CreateAcademicUseCase';
 import AcademicGateway from '../gateways/AcademicGateway';
 import BaseController from './BaseController';
 
 export default class AcademicController extends BaseController {
 	async create(req: HttpRequest<CreateAcademicRequest>): Promise<HttpResponse<CreateAcademicResponse>> {
 		const academicGateway = new AcademicGateway();
-		const academicUseCase = new AcademicUseCase(academicGateway);
+		const academicUseCase = new CreateAcademicUseCase(academicGateway);
 		return await this.createUseCase(req, academicUseCase);
 	}
 }
