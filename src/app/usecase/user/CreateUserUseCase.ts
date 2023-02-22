@@ -3,11 +3,9 @@ import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from
 import { UserDomain } from '@/domain/entities/UserDomain';
 import StatusCode from '../../status/StatusCode';
 import { ICreateUserUseCase } from '../../protocol/ICreateUserUseCase';
-import { IAddressGateway } from '../../protocol/gateways/IAddressGateway';
-import { AddressDomain } from '@/domain/entities/AddressDomain';
 
 export default class CreateUserUseCase implements ICreateUserUseCase {
-	constructor(private userGateway: IUserGateway, private addressGateway: IAddressGateway) {}
+	constructor(private userGateway: IUserGateway) {}
 
 	async execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {
 		const userResult = UserDomain.execute({
@@ -32,19 +30,6 @@ export default class CreateUserUseCase implements ICreateUserUseCase {
 		});
 
 		const userCreate = await this.userGateway.create(userResult.parms);
-
-		const addressResult = AddressDomain.execute({
-			id_user: userCreate.id,
-			cep: input.body.cep,
-			uf: input.body.uf,
-			city: input.body.city,
-			neighborhood: input.body.neighborhood,
-			number: input.body.number,
-			public_place: input.body.public_place,
-			complement: input.body.complement
-		});
-
-		await this.addressGateway.create(addressResult.parms);
 
 		return {
 			body: {
