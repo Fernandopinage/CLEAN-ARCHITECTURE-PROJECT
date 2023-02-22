@@ -18,12 +18,4 @@ export interface CreateUserRequest {
 	gender: string;
 	salary_expectation: number;
 	military_experience: boolean;
-
-	cep: string;
-	uf: string;
-	city: string;
-	neighborhood: string;
-	number: string;
-	public_place?: string;
-	complement?: string;
 }

@@ -3,11 +3,20 @@ import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from
 import { UserDomain } from '@/domain/entities/UserDomain';
 import StatusCode from '../../status/StatusCode';
 import { ICreateUserUseCase } from '../../protocol/ICreateUserUseCase';
+import UserValidator from '@/app/validator/UserValidator';
+import CommonErrors from '@/app/errors/CommonErrors';
 
 export default class CreateUserUseCase implements ICreateUserUseCase {
 	constructor(private userGateway: IUserGateway) {}
 
 	async execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {
+		if (UserValidator.hasFildsEmpy(input.body)) {
+			return {
+				errors: [CommonErrors.serverError],
+				statusCode: StatusCode.badRequest
+			};
+		}
+
 		const userResult = UserDomain.execute({
 			first_name: input.body.first_name,
 			second_name: input.body.second_name,
