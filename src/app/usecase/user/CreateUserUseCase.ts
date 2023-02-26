@@ -4,6 +4,8 @@ import { UserDomain } from '@/domain/entities/UserDomain';
 import StatusCode from '../../status/StatusCode';
 import { ICreateUserUseCase } from '../../protocol/ICreateUserUseCase';
 import { IUserValidator } from '@/app/protocol/validator/IUserValidator';
+import CpfUtils from '@/app/utils/CpfUtils';
+import PhoneUtils from '@/app/utils/PhoneUtils';
 
 export default class CreateUserUseCase implements ICreateUserUseCase {
 	constructor(private userGateway: IUserGateway, private userValidator: IUserValidator) {}
@@ -22,10 +24,10 @@ export default class CreateUserUseCase implements ICreateUserUseCase {
 			second_name: input.body.second_name,
 			email: input.body.email,
 			password: input.body.password,
-			phone: input.body.phone,
+			phone: PhoneUtils.remove(input.body.phone),
 			pcd: input.body.pcd,
 			rg: input.body.rg,
-			cpf: input.body.cpf,
+			cpf: CpfUtils.remove(input.body.cpf),
 			year: input.body.year,
 			birth_place: input.body.birth_place,
 			color_race: input.body.color_race,

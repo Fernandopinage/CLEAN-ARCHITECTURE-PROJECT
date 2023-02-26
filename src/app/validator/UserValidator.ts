@@ -2,6 +2,8 @@ import { CreateUserRequest, HttpRequest, HttpResponse } from '../dto';
 import UserErrors from '../errors/UserErrors';
 import { IUserValidator } from '../protocol/validator/IUserValidator';
 import StatusCode from '../status/StatusCode';
+import CpfUtils from '../utils/CpfUtils';
+import PhoneUtils from '../utils/PhoneUtils';
 
 export default class UserValidator implements IUserValidator {
 	private hasFildsEmpy(input) {
@@ -23,6 +25,18 @@ export default class UserValidator implements IUserValidator {
 		if (this.hasFildsEmpy(input.body)) {
 			return {
 				errors: [UserErrors.serverError],
+				statusCode: StatusCode.badRequest
+			};
+		}
+		if (!CpfUtils.isValid(input.body.cpf)) {
+			return {
+				errors: [UserErrors.cpfInvalid],
+				statusCode: StatusCode.badRequest
+			};
+		}
+		if (PhoneUtils.isValid(input.body.phone)) {
+			return {
+				errors: [UserErrors.phoneInvalid],
 				statusCode: StatusCode.badRequest
 			};
 		}
