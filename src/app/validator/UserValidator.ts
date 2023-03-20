@@ -1,11 +1,11 @@
 import { CreateUserRequest, HttpRequest, HttpResponse } from '../dto';
 import UserErrors from '../errors/UserErrors';
-import { IUserValidator } from '../protocol/validator/IUserValidator';
 import StatusCode from '../status/StatusCode';
 import CpfUtils from '../utils/CpfUtils';
 import PhoneUtils from '../utils/PhoneUtils';
+import { BaseValidator } from './BaseValidator';
 
-export default class UserValidator implements IUserValidator {
+export default class UserValidator extends BaseValidator<HttpRequest<CreateUserRequest>, HttpResponse<number>> {
 	private hasFildsEmpy(input) {
 		if (
 			!input.first_name ||
