@@ -29,6 +29,17 @@ class UserRoute {
 			res.status(response.statusCode);
 			res.json(response.errors || response.body);
 		});
+
+		app.post('/api/v1/users/authentication', async (req, res) => {
+			const response = await userController.loginUser({
+				body: {
+					email: req.body.email,
+					password: req.body.password
+				}
+			});
+			res.status(response.statusCode);
+			res.json(response.errors || response.body);
+		});
 	}
 }
 export default new UserRoute();

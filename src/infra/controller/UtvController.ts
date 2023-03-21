@@ -7,6 +7,6 @@ export default class UtvController extends BaseController {
 	async create(req: HttpRequest<CreateUtvRequest>): Promise<HttpResponse<CreateUtvResponse>> {
 		const utvGateway = new UtvGateway();
 		const utvUseCase = new CreateUtvUseCase(utvGateway);
-		return await this.createUseCase(req, utvUseCase);
+		return await this.useCase(req, utvUseCase);
 	}
 }

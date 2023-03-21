@@ -7,6 +7,6 @@ export default class LanguagemController extends BaseController {
 	async create(req: HttpRequest<CreateLanguagemRequest>): Promise<HttpResponse<CreateLanguagemResponse>> {
 		const languagemGateway = new LanguagemGateway();
 		const languagemUseCase = new CreateLanguagemUseCase(languagemGateway);
-		return await this.createUseCase(req, languagemUseCase);
+		return await this.useCase(req, languagemUseCase);
 	}
 }

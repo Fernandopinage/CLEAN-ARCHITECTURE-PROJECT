@@ -16,3 +16,5 @@ export { CreateInterestRequest } from '@/app/dto/interes/CreateInterestRequest';
 export { CreateInterestResponse } from '@/app/dto/interes/CreateInterestResponse';
 export { HttpRequest } from '@/app/dto/http/HttpRequest';
 export { HttpResponse } from '@/app/dto/http/HttpResponse';
+export { LoginUserRequest } from '@/app/dto/user/LoginUserRequest';
+export { LoginUserResponse } from '@/app/dto/user/LoginUserResponse';

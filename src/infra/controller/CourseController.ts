@@ -7,6 +7,6 @@ export default class CourseController extends BaseController {
 	async create(req: HttpRequest<CreateCourseRequest>): Promise<HttpResponse<CreateCourseResponse>> {
 		const courseGateway = new CourseGateway();
 		const courseUseCase = new CreateCourseUseCase(courseGateway);
-		return await this.createUseCase(req, courseUseCase);
+		return await this.useCase(req, courseUseCase);
 	}
 }

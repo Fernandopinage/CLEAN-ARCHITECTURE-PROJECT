@@ -7,6 +7,6 @@ export default class AddressController extends BaseController {
 	async create(req: HttpRequest<CreateAddressRequest>): Promise<HttpResponse<CreateUserResponse>> {
 		const addressGateway = new AddressGateway();
 		const addressUseCase = new CreateAddressUseCase(addressGateway);
-		return await this.createUseCase(req, addressUseCase);
+		return await this.useCase(req, addressUseCase);
 	}
 }

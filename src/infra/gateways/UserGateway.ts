@@ -6,4 +6,14 @@ export default class UserGateway implements IUserGateway {
 		const response = await User.create(input);
 		return response.get({ plain: true });
 	}
+
+	async loginUser(input: IUserGateway.LoginRequest): Promise<object> {
+		const users = await User.findAll({
+			where: {
+				email: input.email,
+				password: input.password
+			}
+		});
+		return users;
+	}
 }

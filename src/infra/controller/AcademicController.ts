@@ -7,6 +7,6 @@ export default class AcademicController extends BaseController {
 	async create(req: HttpRequest<CreateAcademicRequest>): Promise<HttpResponse<CreateAcademicResponse>> {
 		const academicGateway = new AcademicGateway();
 		const academicUseCase = new CreateAcademicUseCase(academicGateway);
-		return await this.createUseCase(req, academicUseCase);
+		return await this.useCase(req, academicUseCase);
 	}
 }

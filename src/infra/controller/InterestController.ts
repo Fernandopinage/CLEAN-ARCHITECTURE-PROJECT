@@ -7,6 +7,6 @@ export default class InterestController extends BaseController {
 	async create(req: HttpRequest<CreateInterestRequest>): Promise<HttpResponse<CreateInterestResponse>> {
 		const createInterestGateway = new InterestGateway();
 		const createInterestUseCase = new CreateInterestUseCase(createInterestGateway);
-		return await this.createUseCase(req, createInterestUseCase);
+		return await this.useCase(req, createInterestUseCase);
 	}
 }

@@ -1,5 +1,6 @@
 export interface IUserGateway {
 	create(input: IUserGateway.Request): Promise<IUserGateway.Response>;
+	loginUser(input: IUserGateway.LoginRequest): Promise<object>;
 }
 
 export namespace IUserGateway {
@@ -27,4 +28,14 @@ export namespace IUserGateway {
 	export type Response = {
 		id: number;
 	};
+
+	export type LoginRequest = {
+		email: string;
+		password: string;
+	};
+	// export type LoginResponse = {
+	// 	id: number;
+	// 	name: string;
+	// 	email: string;
+	// };
 }
