@@ -1,6 +1,8 @@
+import { UserDomain } from '@/domain/entities/UserDomain';
+
 export interface IUserGateway {
 	create(input: IUserGateway.Request): Promise<IUserGateway.Response>;
-	loginUser(input: IUserGateway.LoginRequest): Promise<object>;
+	loginUser(input: IUserGateway.QueryRequest): Promise<IUserGateway.LoginResponse>;
 }
 
 export namespace IUserGateway {
@@ -29,13 +31,16 @@ export namespace IUserGateway {
 		id: number;
 	};
 
+	export type QueryRequest = {
+		where?: Partial<LoginRequest>;
+		include?: Partial<object>;
+	};
+
 	export type LoginRequest = {
 		email: string;
 		password: string;
 	};
-	// export type LoginResponse = {
-	// 	id: number;
-	// 	name: string;
-	// 	email: string;
-	// };
+	export type LoginResponse = {
+		list: Array<UserDomain>;
+	};
 }

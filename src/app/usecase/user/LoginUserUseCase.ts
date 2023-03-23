@@ -6,11 +6,13 @@ import StatusCode from '@/app/status/StatusCode';
 export default class LoginUserUseCase implements ILoginUserUseCase {
 	constructor(private userGateway: IUserGateway) {}
 	async execute(input: HttpRequest<LoginUserRequest>): Promise<HttpResponse<LoginUserResponse>> {
-		const response = await this.userGateway.loginUser({ email: input.body.email, password: input.body.password });
-		console.log('>>>', response);
+		const response = await this.userGateway.loginUser({
+			where: { email: input.body.email, password: input.body.password }
+		});
+
 		return {
 			body: {
-				token: 'response'
+				token: response.list
 			},
 			statusCode: StatusCode.ok
 		};

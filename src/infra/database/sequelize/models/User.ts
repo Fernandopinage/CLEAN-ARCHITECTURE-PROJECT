@@ -1,6 +1,15 @@
+import { UserDomain } from '@/domain/entities/UserDomain';
 import { sequelize } from '@/infra/database/sequelize/config/database';
 import { DataTypes, Model } from 'sequelize';
-export class User extends Model {}
+export class User extends Model {
+	static mapperArrayToDomain(user: User[]) {
+		return user.map((e) => e.mapperToDomain(e));
+	}
+
+	mapperToDomain(e) {
+		return UserDomain.execute(e.dataValues);
+	}
+}
 
 User.init(
 	{
