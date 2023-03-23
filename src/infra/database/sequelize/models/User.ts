@@ -3,11 +3,11 @@ import { sequelize } from '@/infra/database/sequelize/config/database';
 import { DataTypes, Model } from 'sequelize';
 export class User extends Model {
 	static mapperArrayToDomain(user: User[]) {
-		return user.map((e) => e.mapperToDomain(e));
+		return user.map((e) => e.mapperToDomain());
 	}
 
-	mapperToDomain(e) {
-		return UserDomain.execute(e.dataValues);
+	mapperToDomain() {
+		return UserDomain.execute({ ...this.dataValues });
 	}
 }
 
