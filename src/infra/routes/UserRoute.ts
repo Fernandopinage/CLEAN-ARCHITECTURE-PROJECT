@@ -40,6 +40,16 @@ class UserRoute {
 			res.status(response.statusCode);
 			res.json(response.errors || response.body);
 		});
+
+		app.get('/api/v1/users', async (req, res) => {
+			const response = await userController.userAll({
+				headers: {
+					token: req.headers.token as string
+				}
+			});
+			res.status(response.statusCode);
+			res.json(response.errors || response.body);
+		});
 	}
 }
 export default new UserRoute();

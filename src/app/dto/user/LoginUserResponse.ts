@@ -1,3 +1,3 @@
 export interface LoginUserResponse {
-	token?: Array<object>;
+	token?: string;
 }

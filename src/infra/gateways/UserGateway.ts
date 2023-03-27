@@ -12,6 +12,15 @@ export default class UserGateway implements IUserGateway {
 		return this.listBy({ email, password });
 	}
 
+	async listAll(): Promise<IUserGateway.LoginResponse> {
+		const { rows, count } = await User.findAndCountAll();
+
+		return {
+			list: User.mapperArrayToDomain(rows),
+			total: count
+		};
+	}
+
 	private async listBy(input: IUserGateway.LoginRequest): Promise<IUserGateway.LoginResponse> {
 		const { rows } = await User.findAndCountAll({
 			where: {

@@ -2,6 +2,7 @@ import { HttpRequest, HttpResponse, LoginUserRequest, LoginUserResponse } from '
 import { IUserGateway } from '@/app/protocol/gateways/IUserGateway';
 import { ILoginUserUseCase } from '@/app/protocol/ILoginUserUseCase';
 import StatusCode from '@/app/status/StatusCode';
+import JwtToken from '@/app/utils/JwtToken';
 
 export default class LoginUserUseCase implements ILoginUserUseCase {
 	constructor(private userGateway: IUserGateway) {}
@@ -12,9 +13,17 @@ export default class LoginUserUseCase implements ILoginUserUseCase {
 
 		return {
 			body: {
-				token: response.list
+				token: this.token({
+					id: response.list[0].parms.id,
+					name: response.list[0].parms.first_name,
+					email: response.list[0].parms.email
+				})
 			},
 			statusCode: StatusCode.ok
 		};
+	}
+
+	private token(input: object): string {
+		return JwtToken.generateToken(input);
 	}
 }
