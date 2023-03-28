@@ -4,7 +4,9 @@ dotenv.config();
 
 export default class JwtToken {
 	static generateToken(input: object): string {
-		return Jwt.sign(input, process.env.TOKEN_SECURITY);
+		return Jwt.sign(input, process.env.TOKEN_SECURITY, {
+			expiresIn: 300
+		});
 	}
 
 	static verifyToken(input: string) {

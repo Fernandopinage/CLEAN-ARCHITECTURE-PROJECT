@@ -6,6 +6,7 @@ import { ICreateUserUseCase } from '../../protocol/ICreateUserUseCase';
 import { IUserValidator } from '@/app/protocol/validator/IUserValidator';
 import CpfUtils from '@/app/utils/CpfUtils';
 import PhoneUtils from '@/app/utils/PhoneUtils';
+import Encrypt from '@/app/utils/Encrypt';
 
 export default class CreateUserUseCase implements ICreateUserUseCase {
 	constructor(private userGateway: IUserGateway, private userValidator: IUserValidator) {}
@@ -23,7 +24,7 @@ export default class CreateUserUseCase implements ICreateUserUseCase {
 			first_name: input.body.first_name,
 			second_name: input.body.second_name,
 			email: input.body.email,
-			password: input.body.password,
+			password: await Encrypt.hash(input.body.password),
 			phone: PhoneUtils.remove(input.body.phone),
 			pcd: input.body.pcd,
 			rg: input.body.rg,
