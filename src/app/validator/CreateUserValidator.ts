@@ -1,11 +1,19 @@
 import { CreateUserRequest, HttpRequest, HttpResponse } from '../dto';
 import UserErrors from '../errors/UserErrors';
+import { ICreateUserValidator } from '../protocol/validator/ICreateUserValidator';
 import StatusCode from '../status/StatusCode';
 import CpfUtils from '../utils/CpfUtils';
 import PhoneUtils from '../utils/PhoneUtils';
 import { BaseValidator } from './BaseValidator';
 
-export default class UserValidator extends BaseValidator<HttpRequest<CreateUserRequest>, HttpResponse<number>> {
+export default class CreateUserValidator
+	extends BaseValidator<HttpRequest<CreateUserRequest>, HttpResponse<number>>
+	implements ICreateUserValidator
+{
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	protected auth(_input: string): boolean {
+		return true;
+	}
 	private hasFildsEmpy(input) {
 		if (
 			!input.first_name ||

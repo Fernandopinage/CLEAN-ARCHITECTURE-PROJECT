@@ -3,13 +3,13 @@ import { HttpRequest, HttpResponse, CreateUserRequest, CreateUserResponse } from
 import { UserDomain } from '@/domain/entities/UserDomain';
 import StatusCode from '../../status/StatusCode';
 import { ICreateUserUseCase } from '../../protocol/ICreateUserUseCase';
-import { IUserValidator } from '@/app/protocol/validator/IUserValidator';
+import { ICreateUserValidator } from '@/app/protocol/validator/ICreateUserValidator';
 import CpfUtils from '@/app/utils/CpfUtils';
 import PhoneUtils from '@/app/utils/PhoneUtils';
 import Encrypt from '@/app/utils/Encrypt';
 
 export default class CreateUserUseCase implements ICreateUserUseCase {
-	constructor(private userGateway: IUserGateway, private userValidator: IUserValidator) {}
+	constructor(private userGateway: IUserGateway, private userValidator: ICreateUserValidator) {}
 
 	async execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {
 		const validator = this.userValidator.validator(input);

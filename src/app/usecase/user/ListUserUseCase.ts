@@ -2,14 +2,19 @@ import { HttpRequest, HttpResponse } from '@/app/dto';
 import { ListUserResponse } from '@/app/dto/user/list-all-user/ListUserResponse';
 import { IUserGateway } from '@/app/protocol/gateways/IUserGateway';
 import { IListUserUseCase } from '@/app/protocol/IListUserUseCase';
+import { IListUserValidator } from '@/app/protocol/validator/IListUserValidator';
 import StatusCode from '@/app/status/StatusCode';
-import JwtToken from '@/app/utils/JwtToken';
 
 export default class ListUserUseCase implements IListUserUseCase {
-	constructor(private userGateway: IUserGateway) {}
+	constructor(private userGateway: IUserGateway, private listUserValidator: IListUserValidator) {}
 	async execute(input: HttpRequest<void>): Promise<HttpResponse<ListUserResponse>> {
-		const token = JwtToken.verifyToken(input.headers.token);
-		console.log('>>>>>>', token);
+		const validator = this.listUserValidator.validator(input);
+		if (validator.statusCode !== 0) {
+			return {
+				errors: validator.errors,
+				statusCode: validator.statusCode
+			};
+		}
 		const response = await this.userGateway.listAll();
 		return {
 			body: {
