@@ -1,6 +1,12 @@
-import { UserDomain } from '@/domain/entities/UserDomain';
-
 export interface ListUserResponse {
-	list?: Array<UserDomain>;
+	list?: Array<{
+		id: number;
+		first_name: string;
+		second_name: string;
+		email: string;
+		phone: string;
+		pcd: boolean;
+		year: string;
+	}>;
 	count?: number;
 }

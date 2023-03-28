@@ -18,7 +18,15 @@ export default class ListUserUseCase implements IListUserUseCase {
 		const response = await this.userGateway.listAll();
 		return {
 			body: {
-				list: response.list,
+				list: response.list.map((e) => ({
+					id: e.parms.id,
+					first_name: e.parms.first_name,
+					second_name: e.parms.second_name,
+					year: e.parms.year,
+					email: e.parms.email,
+					pcd: e.parms.pcd,
+					phone: e.parms.phone
+				})),
 				count: response.total
 			},
 			statusCode: StatusCode.ok

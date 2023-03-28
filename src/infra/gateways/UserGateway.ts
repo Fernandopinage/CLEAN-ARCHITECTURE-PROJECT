@@ -14,7 +14,6 @@ export default class UserGateway implements IUserGateway {
 
 	async listAll(): Promise<IUserGateway.LoginResponse> {
 		const { rows, count } = await User.findAndCountAll();
-
 		return {
 			list: User.mapperArrayToDomain(rows),
 			total: count
