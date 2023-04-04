@@ -3,7 +3,7 @@ import { UserDomain } from '@/domain/entities/UserDomain';
 export interface IUserGateway {
 	create(input: IUserGateway.Request): Promise<IUserGateway.Response>;
 	loginUser(input: IUserGateway.QueryRequest): Promise<IUserGateway.LoginResponse>;
-	listAll(): Promise<IUserGateway.LoginResponse>;
+	listByNotParms(): Promise<IUserGateway.LoginResponse>;
 }
 
 export namespace IUserGateway {
@@ -33,13 +33,13 @@ export namespace IUserGateway {
 	};
 
 	export type QueryRequest = {
-		where?: Partial<LoginRequest>;
+		where?: LoginRequest;
 		include?: Partial<object>;
 	};
 
 	export type LoginRequest = {
-		email: string;
-		password: string;
+		email?: string;
+		password?: string;
 	};
 	export type LoginResponse = {
 		list: Array<UserDomain>;

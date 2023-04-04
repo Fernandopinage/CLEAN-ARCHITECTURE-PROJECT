@@ -8,27 +8,24 @@ export default class UserGateway implements IUserGateway {
 	}
 
 	async loginUser(configure: IUserGateway.QueryRequest): Promise<IUserGateway.LoginResponse> {
-		const { email, password } = configure.where;
-		return this.listBy({ email, password });
+		return this.listByParms({ where: configure.where });
 	}
 
-	async listAll(): Promise<IUserGateway.LoginResponse> {
-		const { rows, count } = await User.findAndCountAll();
+	async listByNotParms(): Promise<IUserGateway.LoginResponse> {
+		return await this.listAll({});
+	}
+
+	private async listByParms(input: IUserGateway.QueryRequest): Promise<IUserGateway.LoginResponse> {
+		return await this.listAll(input);
+	}
+
+	private async listAll(input: IUserGateway.QueryRequest) {
+		const { rows, count } = await User.findAndCountAll({
+			where: input.where
+		});
 		return {
 			list: User.mapperArrayToDomain(rows),
 			total: count
-		};
-	}
-
-	private async listBy(input: IUserGateway.LoginRequest): Promise<IUserGateway.LoginResponse> {
-		const { rows } = await User.findAndCountAll({
-			where: {
-				email: input.email,
-				password: input.password
-			}
-		});
-		return {
-			list: User.mapperArrayToDomain(rows)
 		};
 	}
 }

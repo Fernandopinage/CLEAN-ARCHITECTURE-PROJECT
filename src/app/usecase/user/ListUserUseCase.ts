@@ -15,7 +15,7 @@ export default class ListUserUseCase implements IListUserUseCase {
 				statusCode: validator.statusCode
 			};
 		}
-		const response = await this.userGateway.listAll();
+		const response = await this.userGateway.listByNotParms();
 		return {
 			body: {
 				list: response.list.map((e) => ({
